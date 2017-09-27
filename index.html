@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<link id="pageInitStyle" href="css/styles.css" rel="stylesheet" />
+		<link id="pageMainStyle" href="" rel="stylesheet" />
+		<link id="pageFontStyle" href='https://fonts.googleapis.com/css?family=Roboto:400,700,700italic,400italic' rel='stylesheet' type='text/css' />
+	</head>
+	
+	<body>
+	
+		<!--- load required scripts --->
+		<script src="phonegap.js"></script>
+		<script src="lib/jquery-1.8.2.min.js"></script>
+		<script src="js/main.js"></script>
+		
+		<!--- setup containers/pages --->
+		<div id='mainDiv'></div>
+		<div id='debugDiv'><div id='contentDiv' style='padding:20px;'></div></div>
+		<div id='newVersionDiv'><br /><img src="http://kiosk.dakjr.com/assets/img/logo.png" id="logo" /><br /><br /><br />A new version of the<br />application is available<br /><br /><br /><br /><a id='newVersionLink' href='' class='selectButton'>Update Now</a></div>
+		
+		<script type="text/javascript">
+			// global variables
+			var globalNetworkState = null;
+			var globalDeviceUUID = null;
+			var globalAppVersion = '';			
+		
+			// create a displayPush function to streamline output
+			function displayPush( m ) {
+				var d = new Date();
+				var n = d.toLocaleTimeString();
+				var ms = d.getMilliseconds();
+				$('#contentDiv').prepend('<span style="font-weight:bold;text-decoration:underline;">' + n + '</span><br />' + m + '<br /><br />');
+			}
+			
+			app.reloadStylesheet();
+			displayPush('Reloaded Stylesheet');
+			
+			// start device ready listener (and define function actions)
+			document.addEventListener("deviceready", function() {
+
+				// track device's UUID
+				displayPush('Device Ready: ' + device.uuid);
+				globalDeviceUUID = device.uuid;
+				
+				// get application's current version
+				navigator.appInfo.getAppInfo(function(appInfo) {
+						globalAppVersion = appInfo.version;
+						displayPush(appInfo.identifier);
+						displayPush(appInfo.version);
+						displayPush(appInfo.build);
+				}, function(err) {
+					displayPush(err);
+				});
+				displayPush('Version: ' + globalAppVersion);
+
+				// kick off sequence of startup functions
+				displayPush('Starting App');
+				app.initialize();				
+				
+			});
+			
+		</script>
+
+	</body>
+</html>
