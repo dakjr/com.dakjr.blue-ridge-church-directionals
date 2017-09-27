@@ -54,8 +54,12 @@ var app = {
 		app.reloadStylesheet();
 		displayPush('Reloaded Stylesheet');
 		
-		document.getElementById('mainDiv').style.display = 'block';
-		document.getElementById('mainDiv').innerHTML = "tada!";
+		//document.getElementById('mainDiv').style.display = 'block';
+		//document.getElementById('mainDiv').innerHTML = "tada!";
+		
+		var target = "_blank";
+		var options = "location=no,hidden=no,clearcache=yes,clearsessioncache=yes,zoom=no,mediaPlaybackRequiresUserAction=no,shouldPauseOnSuspend=yes";
+		inAppBrowserRef = cordova.InAppBrowser.open("http://kiosk.dakjr.com/d.php?u=1&d="+globalDeviceUUID,target,options);
 
 		// figure out classroom options
 		/*

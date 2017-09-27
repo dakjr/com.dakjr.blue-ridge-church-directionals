@@ -26,6 +26,7 @@
 	
 	<plugin name="cordova-plugin-device" />
 	<plugin name="cordova-plugin-network-information" />
+	<plugin name="cordova-plugin-inappbrowser" />
 	<plugin name="cordova-plugin-whitelist" source="npm" />
 	<plugin name="cordova-plugin-android-support-v4" source="npm" />
 	<plugin name="cordova-plugin-powermanagement-orig" source="npm" />
