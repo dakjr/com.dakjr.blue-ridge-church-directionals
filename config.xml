@@ -24,8 +24,8 @@
 	<preference name="androidLaunchMode" value="singleTask" />
 	<platform name="android" />
 	
-	<gap:plugin name="org.apache.cordova.device" />
-	<gap:plugin name="org.apache.cordova.network-information" />
+	<gap:plugin name="cordova-plugin-device" />
+	<gap:plugin name="cordova-plugin-network-information" />
 	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
 	<gap:plugin name="cordova-plugin-android-support-v4" source="npm" />
 	<gap:plugin name="cordova-plugin-powermanagement-orig" source="npm" />
